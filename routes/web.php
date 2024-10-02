@@ -57,15 +57,15 @@ $tasks = [
     ),
 ];
 
-Route::get('/', function () {
+Route::get('/', function () use ($tasks) {
     return view('index', [
-        'name' => 'YIxun'
+        'tasks' => $tasks
     ]);
-});
+})->name('tasks.index');
 
-Route::get('/hello', function () {
-    return 'hello';
-});
+Route::get('/{id}', function ($id) {
+    return 'One single task';
+})->name('tasks.show');
 
 
 Route::get('/greet/{name}', function ($name) {
